@@ -5,6 +5,16 @@ const SearchBox = document.querySelector(".search input");
 const SearchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
+const weatherIcons = new Map([
+   ["Clouds", "cloud2.png"],
+   ["Clear", "clear.png"],
+   ["Rain", "rain.png"],
+   ["Drizzle", "cloud.png"],
+   ["Mist", "mist.png"],
+   ["Haze", "haze.png"],
+   ["Snow", "snow.png"]
+ ]);
+
 async function checkWeather(city) {
      const response = await fetch(ApiURL + city + `&appid=${ApiKey}`);
 
@@ -19,31 +29,12 @@ async function checkWeather(city) {
         document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
         document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
        
-   
-        if(data.weather[0].main == "Clouds"){
-           weatherIcon.src = "cloud2.png";
-        }
-        else if(data.weather[0].main == "Clear"){
-           weatherIcon.src = "clear.png";
-        }
-        else if(data.weather[0].main == "Rain"){
-           weatherIcon.src = "rain.png";
-        }
-        else if(data.weather[0].main == "Drizzle"){
-           weatherIcon.src = "cloud.png";
-        }
-        else if(data.weather[0].main == "Mist"){
-           weatherIcon.src = "mist.png";
-        }
-        else if(data.weather[0].main == "Haze"){
-           weatherIcon.src = "haze.png";
-        }
-        else if(data.weather[0].main == "Snow"){
-           weatherIcon.src = "snow.png";
-        }
        
-        document.querySelector(".weather").style.display = "block";
-        document.querySelector(".error").style.display = "none";
+      const condition = data.weather[0].main;
+      weatherIcon.src = weatherIcons.get(condition);
+
+     document.querySelector(".weather").style.display = "block";
+     document.querySelector(".error").style.display = "none";
         
         
    
