@@ -6,13 +6,13 @@ const SearchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
 const weatherIcons = new Map([
-   ["Clouds", "cloud2.png"],
-   ["Clear", "clear.png"],
-   ["Rain", "rain.png"],
-   ["Drizzle", "cloud.png"],
-   ["Mist", "mist.png"],
-   ["Haze", "haze.png"],
-   ["Snow", "snow.png"]
+   ["Clouds", "assets/images/cloud2.png"],
+   ["Clear", "assets/images/clear.png"],
+   ["Rain", "assets/images/rain.png"],
+   ["Drizzle", "assets/images/cloud.png"],
+   ["Mist", "assets/images/mist.png"],
+   ["Haze", "assets/images/haze.png"],
+   ["Snow", "assets/images/snow.png"]
  ]);
 
 async function checkWeather(city) {
